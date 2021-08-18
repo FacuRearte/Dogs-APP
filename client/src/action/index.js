@@ -39,38 +39,43 @@ export function getTemperaments() {
 }
 export const searchByName = (name) => {
   return async (dispatch) => {
-    const nameSearched = await axios.get(
-      `http://localhost:3001/dogs?name=${name}`
-    );
+    const json = await axios.get(`http://localhost:3001/dogs?name=${name}`);
     return dispatch({
       type: SEARCH_BY_NAME,
-      payload: nameSearched.data,
+      payload: json.data,
     });
   };
 };
-export const addDog = ({
-  name,
-  heightMin,
-  heightMax,
-  weightMin,
-  weightMax,
-  yearsMin,
-  yearsMax,
-  temperament,
-}) => {
-  return async (dispatch) => {
-    await axios.post("http://localhost:3001/dogs/", {
-      name,
-      height: heightMin + " - " + heightMax,
-      weight: weightMin + " - " + weightMax,
-      lifeSpan: yearsMin + " - " + yearsMax + " years",
-      temperament,
-    });
-    dispatch({
-      type: ADD_DOG,
-    });
+export function postDog(payload) {
+  return async function (dispatch) {
+    const response = await axios.post("http://localhost:3001/dog", payload);
+    console.log(response);
+    return response;
   };
-};
+}
+// export const addDog = ({
+//   name,
+//   heightMin,
+//   heightMax,
+//   weightMin,
+//   weightMax,
+//   yearsMin,
+//   yearsMax,
+//   temperament,
+// }) => {
+//   return async (dispatch) => {
+//     await axios.post("http://localhost:3001/dogs/", {
+//       name,
+//       height: heightMin + " - " + heightMax,
+//       weight: weightMin + " - " + weightMax,
+//       lifeSpan: yearsMin + " - " + yearsMax + " years",
+//       temperament,
+//     });
+//     dispatch({
+//       type: ADD_DOG,
+//     });
+//   };
+// };
 export function filterCreated(payload) {
   return {
     type: FILTER_CREATED,

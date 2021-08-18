@@ -1,9 +1,16 @@
-import axios from "axios";
-import { GET_DOGS, FILTER_BY_VALUE, FILTER_CREATED } from "../action/types";
+import {
+  GET_DOGS,
+  FILTER_BY_VALUE,
+  SEARCH_BY_NAME,
+  FILTER_CREATED,
+  POST_DOG,
+  GET_TEMPERAMENTS,
+} from "../action/types";
 //
 const initialState = {
   dogs: [],
   backupDogs: [],
+  temperaments: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -13,6 +20,20 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: action.payload,
         backupDogs: action.payload,
+      };
+    case POST_DOG:
+      return {
+        ...state,
+      };
+    case GET_TEMPERAMENTS:
+      return {
+        ...state,
+        temperaments: action.payload,
+      };
+    case SEARCH_BY_NAME:
+      return {
+        ...state,
+        dogs: action.payload,
       };
     case FILTER_CREATED:
       let bc = state.backupDogs;

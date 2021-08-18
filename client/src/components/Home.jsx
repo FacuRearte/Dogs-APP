@@ -5,6 +5,7 @@ import { getDogs, filterByValue, filterCreated } from "../action";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import Paginado from "./Paginado.jsx";
+import { SearchBar } from "./SearchBar";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,6 @@ export const Home = () => {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getDogs());
-    setCurrentPage(10);
     setCurrentPage(1);
   }
 
@@ -69,6 +69,7 @@ export const Home = () => {
       >
         Reload the page!
       </button>
+      <SearchBar/>
       <div>
         <select onChange={(e) => handleFilterValue(e)}>
           <option value="AZ">Order A-Z</option>
