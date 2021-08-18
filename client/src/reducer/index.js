@@ -1,8 +1,9 @@
 import axios from "axios";
-import { GET_DOGS, FILTER_BY_VALUE } from "../action/types";
+import { GET_DOGS, FILTER_BY_VALUE, FILTER_CREATED } from "../action/types";
 //
 const initialState = {
   dogs: [],
+  backupDogs: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -11,9 +12,20 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         dogs: action.payload,
+        backupDogs: action.payload,
+      };
+    case FILTER_CREATED:
+      let bc = state.backupDogs;
+      let createdFilter =
+        action.payload === "CREATED"
+          ? bc.filter((el) => el.createdInDb)
+          : bc.filter((el) => !el.createdInDb);
+      return {
+        ...state,
+        dogs: action.payload === "ALL" ? state.backupDogs : createdFilter,
       };
     case FILTER_BY_VALUE:
-      let info = state.dogs;
+      let info = state.backupDogs;
       let sortedArr =
         action.payload === "AZ"
           ? info.sort(function (a, b) {

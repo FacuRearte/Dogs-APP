@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, filterByValue } from "../action";
+import { getDogs, filterByValue, filterCreated } from "../action";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import Paginado from "./Paginado.jsx";
@@ -41,13 +41,18 @@ export const Home = () => {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getDogs());
+    setCurrentPage(10);
     setCurrentPage(1);
   }
 
   function handleFilterValue(e) {
     e.preventDefault();
     dispatch(filterByValue(e.target.value));
-    setCurrentPage(1);
+  }
+
+  function handleFrom(e) {
+    e.preventDefault();
+    dispatch(filterCreated(e.target.value));
   }
 
   return (
@@ -68,7 +73,7 @@ export const Home = () => {
           <option value="LESS">Order less weight</option>
           <option value="HIGH">Order higher weight</option>
         </select>
-        <select>
+        <select onChange={(e) => handleFrom(e)}>
           <option value="ALL">All</option>
           <option value="CREATED">Created</option>
           <option value="API">API</option>
