@@ -46,7 +46,7 @@ export const searchByName = (name) => {
     });
   };
 };
-export function postDog(payload) {
+export function addDog(payload) {
   return async function (dispatch) {
     const response = await axios.post("http://localhost:3001/dog", payload);
     console.log(response);
