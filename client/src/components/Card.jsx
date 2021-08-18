@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import imgs  from './imgs/noimg.jpg'
+
 
 export const Card = ({ name, img, temperament, temperaments, id }) => {
   return (
@@ -7,7 +9,7 @@ export const Card = ({ name, img, temperament, temperaments, id }) => {
       <h3>{name}</h3>
       <Link to={`/dogs/${id}`}>
         <img
-          src={img}
+          src={img ? img : imgs}
           alt="breed"
           width="150"
           height="150"

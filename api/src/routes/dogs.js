@@ -37,6 +37,7 @@ router.post("/dog", async (req, res) => {
     height,
     weight,
     lifeSpan,
+    temperament,
     createdInDb,
   });
   await createdDog.setTemperaments(temperament);

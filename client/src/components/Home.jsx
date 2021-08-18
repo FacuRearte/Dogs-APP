@@ -60,7 +60,7 @@ export const Home = () => {
 
   return (
     <div>
-      <Link to="/dogs">Create Dog</Link>
+      <Link to="/dog">Create Dog</Link>
       <h1>All ours dogs!</h1>
       <button
         onClick={(e) => {
@@ -94,7 +94,7 @@ export const Home = () => {
                 <Link to={"/dogs/" + el.id}>
                   <Card
                     name={el.name}
-                    img={el.img}
+                    img={el.img ? el.img : el.image}
                     temperament={el.temperament}
                     temperaments={el.temperaments}
                     id={el.id}
