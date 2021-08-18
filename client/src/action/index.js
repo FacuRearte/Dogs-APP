@@ -5,7 +5,7 @@ import {
   GET_TEMPERAMENTS,
   SEARCH_BY_NAME,
   ADD_DOG,
-  ORDER_BY_THING,
+  FILTER_BY_VALUE,
   FILTER_TEMPERAMENT,
   FILTER_CREATED,
 } from "./types";
@@ -83,8 +83,9 @@ export function filterByTemperament(payload) {
     payload,
   };
 }
-export function orderByThing(payload) {
+export function filterByValue(payload) {
   return {
-    type: ORDER_BY_THING,
+    type: FILTER_BY_VALUE,
+    payload,
   };
 }

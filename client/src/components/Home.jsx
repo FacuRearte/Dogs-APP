@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs } from "../action";
+import { getDogs, filterByValue } from "../action";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import Paginado from "./Paginado.jsx";
@@ -44,6 +44,12 @@ export const Home = () => {
     setCurrentPage(1);
   }
 
+  function handleFilterValue(e) {
+    e.preventDefault();
+    dispatch(filterByValue(e.target.value));
+    setCurrentPage(1);
+  }
+
   return (
     <div>
       <Link to="/dogs">Create Dog</Link>
@@ -56,7 +62,7 @@ export const Home = () => {
         Reload the page!
       </button>
       <div>
-        <select>
+        <select onChange={(e) => handleFilterValue(e)}>
           <option value="AZ">Order A-Z</option>
           <option value="ZA">Order Z-A</option>
           <option value="LESS">Order less weight</option>

@@ -5,8 +5,8 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
   /*
    * Vamos a pushear al arreglo pageNumber, el número redondeado para arriba, del resultado de dividir todos los personajes por el número de personajes deseados.
    */
-  for (let i = 0; i <= Math.ceil(allDogs / dogsPerPage); i++) {
-    pageNumber.push(i + 1);
+  for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
+    pageNumber.push(i);
   }
   /*
    * Ahora si tengo 'pageNumber', mapeamos todos los números que contenga el arreglo.
