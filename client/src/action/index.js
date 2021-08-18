@@ -21,19 +21,19 @@ export function getDogs() {
 }
 export function getDetail(id) {
   return async (dispatch) => {
-    const detail = await axios.get(`http://localhost:3001/dogs/${id}`);
+    const json = await axios.get(`http://localhost:3001/dogs/${id}`);
     return dispatch({
       type: GET_DETAIL,
-      payload: detail.data,
+      payload: json.data,
     });
   };
 }
 export function getTemperaments() {
   return async (dispatch) => {
-    let temperaments = await axios.get("http://localhost:3001/temperaments");
+    let json = await axios.get("http://localhost:3001/temperaments");
     return dispatch({
       type: GET_TEMPERAMENTS,
-      payload: temperaments.data,
+      payload: json.data,
     });
   };
 }

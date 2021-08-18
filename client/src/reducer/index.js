@@ -3,7 +3,9 @@ import {
   FILTER_BY_VALUE,
   SEARCH_BY_NAME,
   FILTER_CREATED,
+  FILTER_TEMPERAMENT,
   GET_TEMPERAMENTS,
+  GET_DETAIL,
   ADD_DOG,
 } from "../action/types";
 //
@@ -11,6 +13,7 @@ const initialState = {
   dogs: [],
   backupDogs: [],
   temperaments: [],
+  detail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -24,6 +27,18 @@ function rootReducer(state = initialState, action) {
     case ADD_DOG:
       return {
         ...state,
+      };
+    case FILTER_TEMPERAMENT:
+      let allDogs = state.backupDogs;
+      let temperamentsFiltered =
+        action.payload === "all"
+          ? allDogs
+          : allDogs.filter((elem) =>
+              elem.temperament?.includes(action.payload)
+            );
+      return {
+        ...state,
+        dogs: temperamentsFiltered,
       };
     case GET_TEMPERAMENTS:
       return {
@@ -44,6 +59,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         dogs: action.payload === "ALL" ? state.backupDogs : createdFilter,
+      };
+    case GET_DETAIL:
+      return {
+        ...state,
+        detail: action.payload,
       };
     case FILTER_BY_VALUE:
       let info = state.backupDogs;

@@ -1,7 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, filterByValue, filterCreated } from "../action";
+import {
+  getDogs,
+  filterByValue,
+  filterByTemperament,
+  filterCreated,
+  getTemperaments,
+} from "../action";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import Paginado from "./Paginado.jsx";
@@ -10,6 +16,7 @@ import { SearchBar } from "./SearchBar";
 export const Home = () => {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
+  const temperaments = useSelector( state => state.temperaments )
   const [currentPage, setCurrentPage] = useState(1);
   const [orden, setOrden] = useState("");
   const [dogsPerPage, setDogsPage] = useState(9);
@@ -38,6 +45,7 @@ export const Home = () => {
 
   useEffect(() => {
     dispatch(getDogs());
+    dispatch(getTemperaments());
   }, [dispatch]);
 
   function handleClick(e) {
@@ -53,6 +61,11 @@ export const Home = () => {
     setOrden(`Ordenado ${e.target.value}`);
   }
 
+  const handleFilterTemperament = (e) => {
+    console.log(e.target.value);
+    dispatch(filterByTemperament(e.target.value));
+  };
+
   function handleFrom(e) {
     e.preventDefault();
     dispatch(filterCreated(e.target.value));
@@ -60,16 +73,18 @@ export const Home = () => {
 
   return (
     <div>
-      <Link to="/dog">Create Dog</Link>
-      <h1>All ours dogs!</h1>
+      <div>
+        <h1>Henry Dogs!</h1>
+        <Link to="/dog">Create Dog</Link>
+      </div>
       <button
         onClick={(e) => {
           handleClick(e);
         }}
       >
-        Reload the page!
+        Reload the list!
       </button>
-      <SearchBar/>
+      <SearchBar />
       <div>
         <select onChange={(e) => handleFilterValue(e)}>
           <option value="AZ">Order A-Z</option>
@@ -81,6 +96,14 @@ export const Home = () => {
           <option value="ALL">All</option>
           <option value="CREATED">Created</option>
           <option value="API">API</option>
+        </select>
+        <select onChange={(e) => handleFilterTemperament(e)}>
+          <option value="all">Todos</option>
+          {temperaments?.map((elem) => (
+            <option value={elem.name} key={elem.id}>
+              {elem.name}
+            </option>
+          ))}
         </select>
         <Paginado
           dogsPerPage={dogsPerPage}

@@ -20,7 +20,7 @@ export const DogCreate = () => {
   const [values, setValues] = useState(initialState);
   const [namesTemp, setNamesTemp] = useState([]);
   const [errors, setErrors] = useState(false);
-  const [succes, setSucces] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -51,11 +51,11 @@ export const DogCreate = () => {
     ) {
       dispatch(addDog(values));
       setErrors(false);
-      setSucces(true);
+      setSuccess(true);
       setValues(initialState);
       setNamesTemp([]);
     } else {
-      setSucces(false);
+      setSuccess(false);
       setErrors(true);
     }
   };
@@ -165,7 +165,7 @@ export const DogCreate = () => {
           <button type="submit">Create!</button>
         </div>
       </form>
-      {succes ? <h2>Done!</h2> : null}
+      {success ? <h2>Done!</h2> : null}
       {errors ? <h2>Something went wrong!</h2> : null}
     </div>
   );
