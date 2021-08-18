@@ -10,6 +10,7 @@ export const Home = () => {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
   const [currentPage, setCurrentPage] = useState(1);
+  const [orden, setOrden] = useState("");
   const [dogsPerPage, setDogsPage] = useState(9);
   //
   /**
@@ -48,6 +49,8 @@ export const Home = () => {
   function handleFilterValue(e) {
     e.preventDefault();
     dispatch(filterByValue(e.target.value));
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`);
   }
 
   function handleFrom(e) {
