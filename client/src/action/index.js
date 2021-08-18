@@ -46,36 +46,30 @@ export const searchByName = (name) => {
     });
   };
 };
-export function addDog(payload) {
-  return async function (dispatch) {
-    const response = await axios.post("http://localhost:3001/dog", payload);
-    console.log(response);
-    return response;
+
+export const addDog = ({
+  name,
+  heightMin,
+  heightMax,
+  weightMin,
+  weightMax,
+  yearsMin,
+  yearsMax,
+  temperament,
+}) => {
+  return async (dispatch) => {
+    await axios.post("http://localhost:3001/dogs/", {
+      name,
+      height: heightMin + " - " + heightMax,
+      weight: weightMin + " - " + weightMax,
+      lifeSpan: yearsMin + " - " + yearsMax + " years",
+      temperament,
+    });
+    dispatch({
+      type: ADD_DOG,
+    });
   };
-}
-// export const addDog = ({
-//   name,
-//   heightMin,
-//   heightMax,
-//   weightMin,
-//   weightMax,
-//   yearsMin,
-//   yearsMax,
-//   temperament,
-// }) => {
-//   return async (dispatch) => {
-//     await axios.post("http://localhost:3001/dogs/", {
-//       name,
-//       height: heightMin + " - " + heightMax,
-//       weight: weightMin + " - " + weightMax,
-//       lifeSpan: yearsMin + " - " + yearsMax + " years",
-//       temperament,
-//     });
-//     dispatch({
-//       type: ADD_DOG,
-//     });
-//   };
-// };
+};
 export function filterCreated(payload) {
   return {
     type: FILTER_CREATED,

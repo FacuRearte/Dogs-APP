@@ -3,8 +3,8 @@ import {
   FILTER_BY_VALUE,
   SEARCH_BY_NAME,
   FILTER_CREATED,
-  POST_DOG,
   GET_TEMPERAMENTS,
+  ADD_DOG,
 } from "../action/types";
 //
 const initialState = {
@@ -21,7 +21,7 @@ function rootReducer(state = initialState, action) {
         dogs: action.payload,
         backupDogs: action.payload,
       };
-    case POST_DOG:
+    case ADD_DOG:
       return {
         ...state,
       };

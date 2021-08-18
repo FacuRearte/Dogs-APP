@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/dog", async (req, res) => {
+router.post("/", async (req, res) => {
   const { name, height, weight, lifeSpan, createdInDb, temperament } = req.body;
   if (!name || !height || !weight)
     return res.status(404).send("The name, height and weight are required");
