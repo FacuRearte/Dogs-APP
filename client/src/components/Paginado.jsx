@@ -1,4 +1,6 @@
 import React from "react";
+import style from './Paginate.module.css';
+
 
 export default function Paginado({ dogsPerPage, allDogs, paginado }) {
   const pageNumber = [];
@@ -12,15 +14,18 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
    * Ahora si tengo 'pageNumber', mapeamos todos los números que contenga el arreglo.
    */
   return (
-    <nav>
+    <div>
+    <nav className={style.pepe}>
       <ul>
         {pageNumber &&
           pageNumber.map(number => (
-            <li key={number}>
+            <li key={number}
+            className={style.paginado}>
               <a onClick={() => paginado(number)}>{number}</a>
             </li>
           ))}
       </ul>
     </nav>
+    </div>
   );
 }

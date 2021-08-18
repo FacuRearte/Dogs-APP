@@ -10,8 +10,10 @@ import {
 } from "../action";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
+import {Nav} from './Nav';
 import Paginado from "./Paginado.jsx";
 import { SearchBar } from "./SearchBar";
+import s from './Home.module.css'
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -72,61 +74,73 @@ export const Home = () => {
   }
 
   return (
-    <div>
+    <div className={s.containerPhader}>
       <div>
-        <h1>Henry Dogs!</h1>
-        <Link to="/dog">Create Dog</Link>
+        <Nav />
       </div>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Reload the list!
-      </button>
-      <SearchBar />
-      <div>
-        <select onChange={(e) => handleFilterValue(e)}>
-          <option value="AZ">Order A-Z</option>
-          <option value="ZA">Order Z-A</option>
-          <option value="LESS">Order less weight</option>
-          <option value="HIGH">Order higher weight</option>
-        </select>
-        <select onChange={(e) => handleFrom(e)}>
-          <option value="ALL">All</option>
-          <option value="CREATED">Created</option>
-          <option value="API">API</option>
-        </select>
-        <select onChange={(e) => handleFilterTemperament(e)}>
-          <option value="all">Todos</option>
-          {temperaments?.map((elem) => (
-            <option value={elem.name} key={elem.id}>
-              {elem.name}
-            </option>
-          ))}
-        </select>
-        <Paginado
-          dogsPerPage={dogsPerPage}
-          allDogs={allDogs.length}
-          paginado={paginado}
-        />
-        {currentDogs &&
-          currentDogs.map((el) => {
-            return (
-              <div>
-                <Link to={"/dogs/" + el.id}>
-                  <Card
-                    name={el.name}
-                    img={el.img ? el.img : el.image}
-                    temperament={el.temperament}
-                    temperaments={el.temperaments}
-                    id={el.id}
-                  />
-                </Link>
-              </div>
-            );
-          })}
-      </div>
+        <div>
+          {/* <h1>Henry Dogs!</h1> */}
+        </div>
+
+        <button
+          onClick={(e) => {
+            handleClick(e);
+          }}
+          >
+          Reload the list!
+        </button>
+
+        {/* <SearchBar /> */}
+
+      <div className={s.variosSele}>
+          <select className={s.sele} onChange={(e) => handleFilterValue(e)}>
+              <option value="AZ">Order A-Z</option>
+              <option value="ZA">Order Z-A</option>
+              <option value="LESS">Order less weight</option>
+              <option value="HIGH">Order higher weight</option>
+          </select>
+
+          <select className={s.sele}  onChange={(e) => handleFrom(e)}>
+            <option value="ALL">All</option>
+            <option value="CREATED">Created</option>
+            <option value="API">API</option>
+          </select>
+
+          <select className={s.sele}  onChange={(e) => handleFilterTemperament(e)}>
+              <option value="all">Todos</option>
+                {temperaments?.map((elem) => (
+                  <option value={elem.name} key={elem.id}>
+                  {elem.name}
+              </option>
+            ))}
+          </select>
+          </div>
+
+          <Paginado
+            dogsPerPage={dogsPerPage}
+            allDogs={allDogs.length}
+            paginado={paginado}
+          />
+
+        <div className={s.containerCards}>
+          {currentDogs &&
+            currentDogs.map((el) => {
+              return (
+                
+                  <Link to={"/dogs/" + el.id}>
+                    <Card
+                      name={el.name}
+                      img={el.img ? el.img : el.image}
+                      temperament={el.temperament}
+                      temperaments={el.temperaments}
+                      id={el.id}
+                      />
+                    </Link>
+                  
+                );
+              })}
+        </div>
+      
     </div>
   );
 };

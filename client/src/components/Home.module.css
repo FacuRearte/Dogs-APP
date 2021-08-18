@@ -1,0 +1,45 @@
+.containerPhader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.containerCards{
+    /* background-color: rgb(132, 121, 206); */
+    width: 86%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.containerCards > a{/* HACE REFERENCIA A LAS CARD */
+    text-decoration: none;
+    margin-right:2rem;
+    margin-bottom:2rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.sele{
+    display: inline-block;
+	width: 10rem;
+	cursor: pointer;
+  	padding: 7px 10px;
+  	height: 42px;
+  	outline: 0;
+    margin: 4px; 
+    margin-top: 4px;
+  	border: 0;
+	border-radius: 0;
+	background: #f0f0f0;
+	color: #7b7b7b;
+	font-size: 1em;
+	color: #999;
+	font-family: 
+	'Quicksand', sans-serif;
+	border:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+}

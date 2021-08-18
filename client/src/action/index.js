@@ -8,6 +8,7 @@ import {
   FILTER_BY_VALUE,
   FILTER_TEMPERAMENT,
   FILTER_CREATED,
+  CLEAN,
 } from "./types";
 //
 export function getDogs() {
@@ -88,3 +89,9 @@ export function filterByValue(payload) {
     payload,
   };
 }
+// export function cleanQ(payload) {
+//   return {
+//     type: CLEAN,
+//     payload,
+//   };
+// }

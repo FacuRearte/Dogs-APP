@@ -4,6 +4,7 @@ import { LandingPage } from "./components/LandingPage";
 import { Home } from "./components/Home";
 import { DogCreate } from "./components/DogCreate";
 import { Detail } from "./components/Detail";
+import {Nav} from './components/Nav'
 //
 //
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          {/* <Route path={["/home", "/dogs/:id", "/dog"]}><Nav /></Route> */}
           <Route path="/home" component={Home} />
           <Route path="/dog" component={DogCreate} />
           <Route path="/dogs/:id" component={Detail} />

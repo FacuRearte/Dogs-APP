@@ -1,0 +1,12 @@
+.image{
+    width: 15%;
+    height: 15%;
+    padding-left: 70px;
+}
+
+.compose{
+    flex: auto;
+    align-content: center;
+    padding-top: 450px;
+    padding-left:900px;
+}
