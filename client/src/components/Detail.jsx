@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getDetail, cleanQ } from "../action/index";
 import { Nav } from "./Nav";
 import noimg from "../components/imgs/noimg.jpg";
@@ -22,7 +21,7 @@ export const Detail = (props) => {
             <div className={s.left}>
               <img
                 src={detail[0]?.img ? detail[0]?.img : noimg}
-                alt={`image ${detail[0]?.name}`}
+                alt={`dog ${detail[0]?.name}`}
                 width="400"
               />
             </div>

@@ -6,9 +6,9 @@ import bg from "./imgs/background.jpg";
 export const LandingPage = () => {
   return (
     <div className={style.compose}>
-      <h1>Welcome to HenryDogs!</h1>
+      <h1>Welcome to Henry Dogs!</h1>
       <Link to="/home">
-        <img src={bg} className={style.image}></img>
+        <img src={bg} className={style.image} alt={'LogoHenry'}></img>
       </Link>
     </div>
   );

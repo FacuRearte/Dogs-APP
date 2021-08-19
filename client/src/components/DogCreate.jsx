@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addDog, getTemperaments } from "../action/index";
-import henry from "../components/imgs/henry.png";
+import style from './DogCreate.module.css'
 
 export const DogCreate = () => {
   const temperaments = useSelector((state) => state.temperaments);
@@ -66,7 +66,7 @@ export const DogCreate = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={style.todo}>
       <h1>Create your own dog</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -161,20 +161,24 @@ export const DogCreate = () => {
             </div>
           </ul>
         </div>
-        <div>
+        <div className={style.submiteo}>
           <button type="submit">Create!</button>
         </div>
-        <div>
+        <div classname={style.labbel}>
+        <h5>Press Henry Logo for go back</h5>
+        </div>
+        <div className={style.divino}>
           <Link to="/home">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb6GuaWluMmyLbR8DqY1QuaQBzeuQywdaqys036yFBbfxdrCnPTDlO5X0J9dBGNpzvMPE&usqp=CAU"
+              alt={'Henrylogo'}
               width={150}
               height={150}
             />
           </Link>
         </div>
       </form>
-      {success ? <h2>Your dog has been created successfully</h2> : null}
+      {success ? <h2>Created Successfully</h2> : null}
       {errors ? <h2>Something went wrong!</h2> : null}
     </div>
   );
