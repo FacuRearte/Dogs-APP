@@ -7,6 +7,7 @@ import {
   GET_TEMPERAMENTS,
   GET_DETAIL,
   ADD_DOG,
+  CLEAN_Q,
 } from "../action/types";
 //
 const initialState = {
@@ -28,6 +29,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+    case CLEAN_Q:
+      return {
+        ...state,
+        detail: [],
+      }
     case FILTER_TEMPERAMENT:
       let allDogs = state.backupDogs;
       let temperamentsFiltered =

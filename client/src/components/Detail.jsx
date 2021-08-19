@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getDetail } from "../action/index";
+import { getDetail, cleanQ } from "../action/index";
 import { Nav } from "./Nav";
 import noimg from "../components/imgs/noimg.jpg";
 import s from "./Detail.module.css";
@@ -9,6 +9,7 @@ import s from "./Detail.module.css";
 export const Detail = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(cleanQ());
     dispatch(getDetail(props.match.params.id));
   }, [dispatch]);
   const detail = useSelector((state) => state.detail);
@@ -25,10 +26,8 @@ export const Detail = (props) => {
                 width="400"
               />
             </div>
-
             <div className={s.right}>
               <h1>{detail[0].name}</h1>
-
               <ul>
                 <li>
                   {" "}
