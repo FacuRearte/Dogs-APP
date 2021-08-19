@@ -131,6 +131,7 @@ export const Home = () => {
                   temperament={el.temperament}
                   temperaments={el.temperaments}
                   id={el.id}
+                  className={s.cardiana}
                 />
               </Link>
             );

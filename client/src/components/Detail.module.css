@@ -15,7 +15,10 @@
     /* background-color: darkblue; */
     box-shadow: 0px 0px 10px 2px black;
     border-radius: 10px;
-    
+}
+
+.container__card:hover{
+    box-shadow: 0px 0px 7px 5px rgb(14, 72, 158);
 }
 
 .left{
@@ -25,7 +28,7 @@
     /* background-color: coral; */
     width: 42%;
     border-right: 1px solid black;
-
+    box-shadow: 0px 0px 3px 2px black;
 }
 .left > img {
     width: 18rem;
@@ -39,4 +42,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.fotito{
+    box-shadow: 0px 0px 7px 5px black;
+}
+
+.fotito:hover{
+    box-shadow: 0px 0px 13px 5px rgb(14, 72, 158);
 }

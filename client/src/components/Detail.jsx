@@ -4,6 +4,7 @@ import { getDetail, cleanQ } from "../action/index";
 import { Nav } from "./Nav";
 import noimg from "../components/imgs/noimg.jpg";
 import s from "./Detail.module.css";
+import { Link } from "react-router-dom";
 
 export const Detail = (props) => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const Detail = (props) => {
                 src={detail[0]?.img ? detail[0]?.img : noimg}
                 alt={`dog ${detail[0]?.name}`}
                 width="400"
+                className={s.fotito}
               />
             </div>
             <div className={s.right}>
@@ -49,6 +51,9 @@ export const Detail = (props) => {
                           (elem) => elem.name + ", "
                         )}
                   </h4>
+                  <Link to='/home'>
+                  <h3>Press HERE for go back</h3>
+                  </Link>
                 </li>
               </ul>
             </div>
