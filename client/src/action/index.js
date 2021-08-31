@@ -38,15 +38,26 @@ export function getTemperaments() {
     });
   };
 }
+// export const searchByName = (name) => {
+//   return async (dispatch) => {
+//     const json = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+//     return dispatch({
+//       type: SEARCH_BY_NAME,
+//       payload: json.data,
+//     });
+//   };
+// };
 export const searchByName = (name) => {
-  return async (dispatch) => {
-    const json = await axios.get(`http://localhost:3001/dogs?name=${name}`);
-    return dispatch({
-      type: SEARCH_BY_NAME,
-      payload: json.data,
-    });
-  };
-};
+  return (dispatch) => {
+    axios.get(`http://localhost:3001/dogs?name=${name}`)
+    .then((data) => {
+      return dispatch({
+        type: SEARCH_BY_NAME,
+        payload: data.data,
+      })
+    })
+  }
+}
 
 export const addDog = ({
   name,
