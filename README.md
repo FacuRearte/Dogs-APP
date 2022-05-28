@@ -4,4 +4,3 @@ Aquí pude desarrollar una aplicación que me traiga información de razas de pe
 ![1630370429620](https://user-images.githubusercontent.com/73850740/133548868-99f9ca8b-6bcf-4f90-b8b4-aa119054573c.jpg)
 
 
-`Próximamente el deploy de esta app`
